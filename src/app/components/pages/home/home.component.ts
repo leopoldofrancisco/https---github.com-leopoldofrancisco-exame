@@ -13,6 +13,7 @@ import { FormGroup } from '@angular/forms';
 export class HomeComponent {
   @Input() btnText!: string;
   closeResult!: string;
+  url: any = "";
 
   fotoForm!: FormGroup;
 
@@ -29,6 +30,21 @@ export class HomeComponent {
 	openLg(content: any) {
 		this.modalService.open(content, { size: 'lg' });
 	}
+
+  bringFile(event: any) {
+    if (!event.target.files[0] || event.target.files[0].length == 0) {
+      return;
+    }
+    let mimeType = event.target.files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (_event) => {
+      this.url = reader.result;
+    }
+  }
 
   cancel(): void {
     this.router.navigate(['/']);

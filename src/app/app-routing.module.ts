@@ -5,7 +5,7 @@ import { BuscarFotoComponent } from './components/buscar-foto/buscar-foto.compon
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'pesquisar/foot', component: BuscarFotoComponent },
+  { path: 'pesquisar/foto', component: BuscarFotoComponent },
 ];
 
 @NgModule({

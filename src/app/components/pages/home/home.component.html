@@ -4,17 +4,18 @@
 	</div>
 	<div class="modal-body">
         <p>Envie uma ou mais imagens, clicando nos quadrados abaixo</p>
-        <div class="file-loading">
-            <input id="input-repl-2" name="input-repl-2" type="file" accept="image/*" multiple>
-        </div>
-        <script>
-        $("#input-repl-2").fileinput({
-            uploadUrl: "/file-upload-batch/2",
-            autoReplace: true,
-            maxFileCount: 5,
-            allowedFileExtensions: ["jpg", "png", "gif"]
-        });
-        </script>
+        <div class="col-sm-4 pull-right">
+            <div class="card mb-4" >
+              <div class="card-body text-center " >
+                <img *ngIf="url" [src]="url" width="150" height="150" alt="empresa"
+                  class="rounded-thumbnail">                  
+              </div>
+            </div>
+            <div class="file-loading">
+                <input type="file" name="imagem" (change)="bringFile($event)" class="form-control">
+            </div>
+           </div>
+
 <!-- form start -->
 <form id="quickForm" >
     <div class="card-body">
