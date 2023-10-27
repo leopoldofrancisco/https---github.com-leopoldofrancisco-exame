@@ -1,5 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +11,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  @Input() btnText!: string;
   closeResult!: string;
 
-	constructor(private modalService: NgbModal) {}
+  fotoForm!: FormGroup;
+
+	constructor(private modalService: NgbModal, private router: Router) {}
 
 	openBackDropCustomClass(content: any) {
 		this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
@@ -23,6 +29,10 @@ export class HomeComponent {
 	openLg(content: any) {
 		this.modalService.open(content, { size: 'lg' });
 	}
+
+  cancel(): void {
+    this.router.navigate(['/']);
+  }
 
 
 
